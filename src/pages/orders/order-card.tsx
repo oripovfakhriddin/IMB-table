@@ -26,14 +26,12 @@ import Status from "./status"
 
 type Props = {
     item: OrderType
-    onDelete: (item: OrderType) => void
-    onView: (item: OrderType) => void
+    onDownload: (item: OrderType) => void
 }
 
-function OrderCard({ item, onDelete, onView }: Props) {
+function OrderCard({ item, onDownload }: Props) {
     return (
         <Card
-            onClick={() => onView(item)}
             className="px-4 pb-6 pt-2 space-y-4 cursor-pointer hover:shadow-md hover:scale-[101%] transition-all"
         >
             <CardHeader className="flex flex-row p-0 pb-2 border-b border-b-muted justify-between items-center gap-3 w-full">
@@ -43,7 +41,7 @@ function OrderCard({ item, onDelete, onView }: Props) {
                         <Status row={item} />
                     </div>
                     <Button
-                        onClick={() => onDelete(item)}
+                        onClick={() => onDownload(item)}
                         variant={"secondary"}
                         icon={<FileDown size={16} />}
                     />

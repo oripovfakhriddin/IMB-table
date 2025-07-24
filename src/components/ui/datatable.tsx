@@ -75,6 +75,7 @@ interface DataTableProps<TData> {
     onDelete?: (data: Row<TData>) => void
     onUndo?: (data: Row<TData>) => void
     onView?: (data: Row<TData>) => void
+    onDownload?: (data: Row<TData>) => void
     tableWrapperClassName?: string
     skeletonRowCount?: number
     onSelectedRowsChange?: (rows: TData[]) => void
@@ -96,7 +97,7 @@ export function DataTable<TData>({
     viewAll,
     height = "h-[65vh]",
     head,
-    enableColumnVisibility=true,
+    enableColumnVisibility = true,
     viewCount,
     numeration = false,
     wrapperClassName,
@@ -105,6 +106,7 @@ export function DataTable<TData>({
     onDelete,
     onUndo,
     onView,
+    onDownload,
     tableWrapperClassName,
     onSelectedRowsChange,
     skeletonRowCount = 15,
@@ -123,7 +125,7 @@ export function DataTable<TData>({
     const search: any = useSearch({ from: "/_main" })
 
     const orderedColumns = React.useMemo(() => {
-        if (onDelete || onEdit || onUndo || onView) {
+        if (onDelete || onEdit || onUndo || onView || onDownload) {
             return [
                 ...columns,
                 {
@@ -139,12 +141,15 @@ export function DataTable<TData>({
                             onEdit={onEdit ? () => onEdit?.(row) : undefined}
                             onUndo={onUndo ? () => onUndo?.(row) : undefined}
                             onView={onView ? () => onView?.(row) : undefined}
+                            onDownload={
+                                onDownload ? () => onDownload?.(row) : undefined
+                            }
                         />
                     ),
                 },
             ]
         } else return columns
-    }, [actionMenuMode, columns, onDelete, onEdit, onUndo, onView])
+    }, [actionMenuMode, columns, onDelete, onEdit, onUndo, onView, onDownload])
 
     const table = useReactTable({
         data: data || [],
@@ -335,9 +340,7 @@ export function DataTable<TData>({
                                         )}
 
                                         {enableColumnVisibility && (
-                                            <th
-                                                className="h-12 px-2 text-left align-middle font-medium !absolute z-10 right-0 top-2"
-                                            >
+                                            <th className="h-12 px-2 text-left align-middle font-medium !absolute z-10 right-0 top-2">
                                                 <div className="flex justify-end">
                                                     <MultiSelect
                                                         label={

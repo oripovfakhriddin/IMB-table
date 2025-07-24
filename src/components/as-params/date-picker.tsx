@@ -61,6 +61,7 @@ export default function ParamDatePicker({
     useEffect(() => {
         navigate({ search: { ...search, [paramName]: defaultValue } })
     }, [])
+    
     return (
         <div
             className={cn(

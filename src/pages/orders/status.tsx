@@ -2,14 +2,12 @@ import Select from "@/components/ui/select"
 import { statusColor, statusOptions, statusText } from "."
 import { useState } from "react"
 import { useTypedStoreData } from "@/hooks/useStoreData"
-import { useNavigate } from "@tanstack/react-router"
 
 type Props = {
     row: OrderType
 }
 
 function Status({ row }: Props) {
-    const navigate = useNavigate()
     const { setStoreData } = useTypedStoreData<{ status: string; id: number }>()
     const [status, setStatus] = useState(row.status)
 

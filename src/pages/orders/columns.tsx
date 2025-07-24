@@ -7,6 +7,12 @@ import {
 import { ColumnDef } from "@tanstack/react-table"
 import { useMemo } from "react"
 import Status from "./status"
+import {
+    InputAcceptance,
+    InputCount,
+    InputDeliveryDate,
+    InputFact,
+} from "./inputs"
 
 export const useOrderColumns = (): ColumnDef<OrderType>[] => {
     return useMemo(
@@ -99,25 +105,25 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                 header: "Miqdori",
                 accessorKey: "count",
                 enableSorting: true,
-                cell: ({ row }) => row.original.count || "-",
+                cell: ({ row }) => <InputCount row={row.original} />,
             },
             {
                 header: "Fakt miqdori",
                 accessorKey: "fact",
                 enableSorting: true,
-                cell: ({ row }) => row.original.fact || "-",
+                cell: ({ row }) => <InputFact row={row.original} />,
             },
             {
                 header: "Qabul qilingan raqam",
                 accessorKey: "act_of_acceptance",
                 enableSorting: true,
-                cell: ({ row }) => row.original.act_of_acceptance || "-",
+                cell: ({ row }) => <InputAcceptance row={row.original} />,
             },
             {
                 header: "Yetkazilgan sana",
                 accessorKey: "delivery_date",
                 enableSorting: true,
-                cell: ({ row }) => row.original.delivery_date || "-",
+                cell: ({ row }) => <InputDeliveryDate row={row.original} />,
             },
         ],
         [],

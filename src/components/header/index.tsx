@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+import { LogOut, User } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import {
     DropdownMenu,
@@ -5,11 +7,8 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
-import { Link, useNavigate } from "@tanstack/react-router"
-import { LogOut, User } from "lucide-react"
+import { Link } from "@tanstack/react-router"
 import { ThemeColorToggle } from "./color-toggle"
-import { SidebarTrigger } from "../ui/sidebar"
-import { ReactNode } from "react"
 
 type Props = {
     title?: string
@@ -17,13 +16,10 @@ type Props = {
     leftChildren?: ReactNode
 }
 const Header = ({ rigthChildren, leftChildren, title }: Props) => {
-    const navigate = useNavigate()
-
     return (
         <header className="py-2 pr-3 pl-2 gap-4 dark:border-b  flex items-center justify-between bg-card max-w-full box-border">
             <div className="flex gap-6 items-center  max-w-full  custom-scrollbar">
                 <div className="flex gap-3 items-center sm:min-w-[180px]">
-                    <SidebarTrigger className="text-gray-500 dark:text-white" />
                     <Link
                         to="/"
                         className="text-2xl text-primary  font-bold sm:block hidden"

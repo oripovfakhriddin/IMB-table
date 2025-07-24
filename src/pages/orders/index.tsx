@@ -71,35 +71,34 @@ export const OrdersPages = () => {
                 dateSend: "07-02-2025",
                 direction: 1254,
                 direction_name: "Zamin Drinks OOO",
-                ttn_number: 5142356,
-                number_machine: "01Z529ZH",
-                full_name: "Oripov Faxriddin A'zamjon o'g'li",
-                phone_number: "+998906949416",
+                ttn_number: 2589637,
+                number_machine: "50Z986AB",
+                full_name: "Toshtemir Hasanov",
+                phone_number: "+998901234567",
                 status: 20,
                 product_name: [
                     "FANTA APELSIN PET 1L 1X6 СМРКД",
                     "FUSE PEACH PET 0,5L 1X12 SAM",
-                    "ПАЛЛЕТ СТАНДАРТНЫЙ",
                 ],
-                count: 2520,
-                fact: 2500,
-                act_of_acceptance: 12,
-                delivery_date: "05-08-2025",
+                count: 3502,
+                fact: 3500,
+                act_of_acceptance: 125,
+                delivery_date: "05-07-2024",
             },
             {
                 id: 2,
                 dateSend: "07-05-2020",
                 direction: 1254,
-                direction_name: "Zamin Drinks OOO",
+                direction_name: "Family Drinks OOO",
                 ttn_number: 5142356,
-                number_machine: "01Z529ZH",
-                full_name: "Oripov",
-                phone_number: "+998906949416",
+                number_machine: "01Z125ZH",
+                full_name: "Behzod Karimov",
+                phone_number: "+998915632356",
                 status: 30,
                 product_name: ["FANTA APELSIN PET 1L 1X6 СМРКД"],
-                count: 100,
-                fact: 90,
-                act_of_acceptance: 13,
+                count: 1000,
+                fact: 950,
+                act_of_acceptance: 136,
                 delivery_date: "05-08-2020",
             },
             {
@@ -109,18 +108,19 @@ export const OrdersPages = () => {
                 direction_name: "Zamin Drinks OOO",
                 ttn_number: 5142356,
                 number_machine: "01Z529ZH",
-                full_name: "Oripov Faxriddin A'zamjon o'g'li",
-                phone_number: "+998906949416",
+                full_name: "Oripov Faxriddin",
+                phone_number: "+998944555766",
                 status: 20,
                 product_name: [
                     "FANTA APELSIN PET 1L 1X6 СМРКД",
                     "FUSE PEACH PET 0,5L 1X12 SAM",
                     "ПАЛЛЕТ СТАНДАРТНЫЙ",
+                    "COCA COLA"
                 ],
-                count: 2520,
-                fact: 2500,
-                act_of_acceptance: 12,
-                delivery_date: "05-08-2025",
+                count: 9456,
+                fact: 9400,
+                act_of_acceptance: 152,
+                delivery_date: "10-07-2025",
             },
             {
                 id: 4,
@@ -129,18 +129,16 @@ export const OrdersPages = () => {
                 direction_name: "Zamin Drinks OOO",
                 ttn_number: 5142356,
                 number_machine: "01Z529ZH",
-                full_name: "Oripov Faxriddin A'zamjon o'g'li",
-                phone_number: "+998906949416",
+                full_name: "Qodir Berdiyorov",
+                phone_number: "+998904587962",
                 status: 10,
                 product_name: [
-                    "FANTA APELSIN PET 1L 1X6 СМРКД",
-                    "FUSE PEACH PET 0,5L 1X12 SAM",
-                    "ПАЛЛЕТ СТАНДАРТНЫЙ",
+                    "COCA COLA "
                 ],
                 count: 2520,
                 fact: 2500,
                 act_of_acceptance: 12,
-                delivery_date: "05-08-2025",
+                delivery_date: "05-07-2025",
             },
             {
                 id: 5,
@@ -149,8 +147,8 @@ export const OrdersPages = () => {
                 direction_name: "Zamin Drinks OOO",
                 ttn_number: 5142356,
                 number_machine: "01Z529ZH",
-                full_name: "Oripov Faxriddin A'zamjon o'g'li",
-                phone_number: "+998906949416",
+                full_name: "Qodir Berdiyorov",
+                phone_number: "+998904587962",
                 status: 10,
                 product_name: [
                     "FANTA APELSIN PET 1L 1X6 СМРКД",
@@ -160,7 +158,7 @@ export const OrdersPages = () => {
                 count: 2520,
                 fact: 2500,
                 act_of_acceptance: 12,
-                delivery_date: "05-08-2025",
+                delivery_date: "05-07-2025",
             },
             {
                 id: 6,
@@ -169,8 +167,8 @@ export const OrdersPages = () => {
                 direction_name: "Zamin Drinks OOO",
                 ttn_number: 5142356,
                 number_machine: "01Z529ZH",
-                full_name: "Oripov Faxriddin A'zamjon o'g'li",
-                phone_number: "+998906949416",
+                full_name: "Qodir Berdiyorov",
+                phone_number: "+998904587962",
                 status: 30,
                 product_name: [
                     "FANTA APELSIN PET 1L 1X6 СМРКД",
@@ -180,7 +178,7 @@ export const OrdersPages = () => {
                 count: 2520,
                 fact: 2500,
                 act_of_acceptance: 12,
-                delivery_date: "05-08-2025",
+                delivery_date: "05-07-2025",
             },
             {
                 id: 7,
@@ -189,8 +187,8 @@ export const OrdersPages = () => {
                 direction_name: "Zamin Drinks OOO",
                 ttn_number: 5142356,
                 number_machine: "01Z529ZH",
-                full_name: "Oripov Faxriddin A'zamjon o'g'li",
-                phone_number: "+998906949416",
+                full_name: "Qodir Berdiyorov",
+                phone_number: "+998904587962",
                 status: 10,
                 product_name: [
                     "FANTA APELSIN PET 1L 1X6 СМРКД",
@@ -200,7 +198,7 @@ export const OrdersPages = () => {
                 count: 2520,
                 fact: 2500,
                 act_of_acceptance: 12,
-                delivery_date: "05-08-2025",
+                delivery_date: "05-07-2025",
             },
         ],
         next: 2,
@@ -208,18 +206,7 @@ export const OrdersPages = () => {
         previous: 1,
     }
 
-    const handleDelete = (item: OrderType) => {
-        clearUserData()
-        openModalDelete()
-        setStoreData(item)
-    }
-    const handleNavigate = (item: OrderType) => {
-        // navigate({
-        //     to: "/order/$id",
-        //     params: { id: item.id.toString() },
-        //     search: { type: item.type },
-        // })
-    }
+    const handleDownload = (item: OrderType) => {}
 
     const columns = useOrderColumns()
     return (
@@ -242,11 +229,8 @@ export const OrdersPages = () => {
                                       <OrderCard
                                           key={item.id}
                                           item={item}
-                                          onDelete={(item) =>
-                                              handleDelete(item)
-                                          }
-                                          onView={(item) =>
-                                              handleNavigate(item)
+                                          onDownload={(item) =>
+                                              handleDownload(item)
                                           }
                                       />
                                   ))}
@@ -266,7 +250,7 @@ export const OrdersPages = () => {
                         columns={columns}
                         data={data?.results}
                         loading={isLoading}
-                        onDelete={(row) => handleDelete(row.original)}
+                        onDownload={(row) => handleDownload(row.original)}
                         paginationProps={{ totalPages: data?.pages }}
                         numeration
                     />
