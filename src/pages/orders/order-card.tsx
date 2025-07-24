@@ -6,17 +6,14 @@ import {
     FileDigit,
     FileDown,
     Flag,
-    Info,
     LocateFixed,
     MapPinHouse,
     Package,
     Phone,
-    Trash,
     Truck,
     User,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { format } from "date-fns"
 import {
     Popover,
     PopoverContent,
@@ -31,9 +28,7 @@ type Props = {
 
 function OrderCard({ item, onDownload }: Props) {
     return (
-        <Card
-            className="px-4 pb-6 pt-2 space-y-4 cursor-pointer hover:shadow-md hover:scale-[101%] transition-all"
-        >
+        <Card className="px-4 pb-6 pt-2 space-y-4 cursor-pointer hover:shadow-md hover:scale-[101%] transition-all">
             <CardHeader className="flex flex-row p-0 pb-2 border-b border-b-muted justify-between items-center gap-3 w-full">
                 <span>#{item.id}</span>
                 <div className="flex items-center gap-2">
@@ -55,12 +50,12 @@ function OrderCard({ item, onDownload }: Props) {
                     </div>
                     <div>
                         <div>
-                            {item.product_name?.length > 1 ? (
+                            {item.product_info?.length > 1 ? (
                                 <Popover>
                                     <PopoverTrigger asChild>
                                         <Button
                                             variant={
-                                                item.product_name?.length > 1
+                                                item.product_info?.length > 1
                                                     ? "secondary"
                                                     : "ghost"
                                             }
@@ -68,15 +63,16 @@ function OrderCard({ item, onDownload }: Props) {
                                                 e.stopPropagation()
                                             }}
                                         >
-                                            {`Ko'rish (${item.product_name?.length})`}
+                                            {`Ko'rish (${item.product_info?.length})`}
                                         </Button>
                                     </PopoverTrigger>
                                     <PopoverContent className="w-64">
                                         <div className="flex flex-col gap-2 text-sm ">
-                                            {item?.product_name?.map(
+                                            {item?.product_info?.map(
                                                 (item, index) => (
                                                     <span>
-                                                        {index + 1}. {item}
+                                                        {index + 1}.{" "}
+                                                        {item?.name}
                                                     </span>
                                                 ),
                                             )}
@@ -84,7 +80,7 @@ function OrderCard({ item, onDownload }: Props) {
                                     </PopoverContent>
                                 </Popover>
                             ) : (
-                                item.product_name?.[0]
+                                item.product_info?.[0]?.name
                             )}
                         </div>
                     </div>
@@ -168,7 +164,7 @@ function OrderCard({ item, onDownload }: Props) {
                         <span>Miqdori:</span>
                     </div>
                     <span className="line-clamp-1 break-all">
-                        {item.count || "-"}
+                        {item?.product_info[0].count || "-"}
                     </span>
                 </div>
                 <div className="flex justify-between items-center gap-3 text-sm ">
@@ -177,7 +173,7 @@ function OrderCard({ item, onDownload }: Props) {
                         <span>Fakt miqdori:</span>
                     </div>
                     <span className="line-clamp-1 break-all">
-                        {item.fact || "-"}
+                        {item?.product_info[0]?.fact || "-"}
                     </span>
                 </div>
                 <div className="flex justify-between items-center gap-3 text-sm ">

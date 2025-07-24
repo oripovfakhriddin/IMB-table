@@ -13,8 +13,11 @@ import {
     InputDeliveryDate,
     InputFact,
 } from "./inputs"
+import { DataTable } from "@/components/ui/datatable"
+import { useOrderSubColumns } from "./sub-table/columns"
 
 export const useOrderColumns = (): ColumnDef<OrderType>[] => {
+    const columns = useOrderSubColumns()
     return useMemo(
         () => [
             {
@@ -69,12 +72,12 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                 accessorKey: "product_name",
                 enableSorting: true,
                 cell: ({ row }) =>
-                    row.original.product_name?.length > 1 ? (
+                    row.original.product_info?.length > 1 ? (
                         <Popover>
                             <PopoverTrigger asChild>
                                 <Button
                                     variant={
-                                        row.original.product_name?.length > 1
+                                        row.original.product_info?.length > 1
                                             ? "secondary"
                                             : "ghost"
                                     }
@@ -82,36 +85,41 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                                         e.stopPropagation()
                                     }}
                                 >
-                                    {`Mahsulotlar: (${row.original.product_name?.length})`}
+                                    {`Mahsulotlar: (${row.original.product_info?.length})`}
                                 </Button>
                             </PopoverTrigger>
-                            <PopoverContent className="w-80">
-                                <div className="flex flex-col gap-2 text-sm ">
-                                    {row.original?.product_name?.map(
-                                        (item, index) => (
-                                            <span>
-                                                {index + 1}. {item}
-                                            </span>
-                                        ),
-                                    )}
-                                </div>
+                            <PopoverContent className="!w-full">
+                                <DataTable
+                                    columns={columns}
+                                    data={row.original.product_info}
+                                    numeration
+                                    viewAll
+                                />
                             </PopoverContent>
                         </Popover>
                     ) : (
-                        row.original.product_name?.[0]
+                        row.original.product_info?.[0]?.name
                     ),
             },
             {
                 header: "Miqdori",
                 accessorKey: "count",
                 enableSorting: true,
-                cell: ({ row }) => <InputCount row={row.original} />,
+                cell: ({ row }) =>
+                    row.original?.product_info.reduce(
+                        (sum, item) => sum + item.count,
+                        0,
+                    ),
             },
             {
                 header: "Fakt miqdori",
                 accessorKey: "fact",
                 enableSorting: true,
-                cell: ({ row }) => <InputFact row={row.original} />,
+                cell: ({ row }) =>
+                    row?.original?.product_info?.reduce(
+                        (sum, item) => sum + item?.fact,
+                        0,
+                    ),
             },
             {
                 header: "Qabul qilingan raqam",

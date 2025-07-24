@@ -76,12 +76,18 @@ export const OrdersPages = () => {
                 full_name: "Toshtemir Hasanov",
                 phone_number: "+998901234567",
                 status: 20,
-                product_name: [
-                    "FANTA APELSIN PET 1L 1X6 СМРКД",
-                    "FUSE PEACH PET 0,5L 1X12 SAM",
+                product_info: [
+                    {
+                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
+                        count: 1500,
+                        fact: 1400,
+                    },
+                    {
+                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
+                        count: 2500,
+                        fact: 2496,
+                    },
                 ],
-                count: 3502,
-                fact: 3500,
                 act_of_acceptance: 125,
                 delivery_date: "05-07-2024",
             },
@@ -95,9 +101,18 @@ export const OrdersPages = () => {
                 full_name: "Behzod Karimov",
                 phone_number: "+998915632356",
                 status: 30,
-                product_name: ["FANTA APELSIN PET 1L 1X6 СМРКД"],
-                count: 1000,
-                fact: 950,
+                product_info: [
+                    {
+                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
+                        count: 1500,
+                        fact: 1400,
+                    },
+                    {
+                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
+                        count: 2500,
+                        fact: 2496,
+                    },
+                ],
                 act_of_acceptance: 136,
                 delivery_date: "05-08-2020",
             },
@@ -111,14 +126,18 @@ export const OrdersPages = () => {
                 full_name: "Oripov Faxriddin",
                 phone_number: "+998944555766",
                 status: 20,
-                product_name: [
-                    "FANTA APELSIN PET 1L 1X6 СМРКД",
-                    "FUSE PEACH PET 0,5L 1X12 SAM",
-                    "ПАЛЛЕТ СТАНДАРТНЫЙ",
-                    "COCA COLA"
+                product_info: [
+                    {
+                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
+                        count: 1500,
+                        fact: 1400,
+                    },
+                    {
+                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
+                        count: 2500,
+                        fact: 2496,
+                    },
                 ],
-                count: 9456,
-                fact: 9400,
                 act_of_acceptance: 152,
                 delivery_date: "10-07-2025",
             },
@@ -132,11 +151,18 @@ export const OrdersPages = () => {
                 full_name: "Qodir Berdiyorov",
                 phone_number: "+998904587962",
                 status: 10,
-                product_name: [
-                    "COCA COLA "
+                product_info: [
+                    {
+                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
+                        count: 1500,
+                        fact: 1400,
+                    },
+                    {
+                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
+                        count: 2500,
+                        fact: 2496,
+                    },
                 ],
-                count: 2520,
-                fact: 2500,
                 act_of_acceptance: 12,
                 delivery_date: "05-07-2025",
             },
@@ -150,13 +176,18 @@ export const OrdersPages = () => {
                 full_name: "Qodir Berdiyorov",
                 phone_number: "+998904587962",
                 status: 10,
-                product_name: [
-                    "FANTA APELSIN PET 1L 1X6 СМРКД",
-                    "FUSE PEACH PET 0,5L 1X12 SAM",
-                    "ПАЛЛЕТ СТАНДАРТНЫЙ",
+                product_info: [
+                    {
+                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
+                        count: 1500,
+                        fact: 1400,
+                    },
+                    {
+                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
+                        count: 2500,
+                        fact: 2496,
+                    },
                 ],
-                count: 2520,
-                fact: 2500,
                 act_of_acceptance: 12,
                 delivery_date: "05-07-2025",
             },
@@ -170,13 +201,18 @@ export const OrdersPages = () => {
                 full_name: "Qodir Berdiyorov",
                 phone_number: "+998904587962",
                 status: 30,
-                product_name: [
-                    "FANTA APELSIN PET 1L 1X6 СМРКД",
-                    "FUSE PEACH PET 0,5L 1X12 SAM",
-                    "ПАЛЛЕТ СТАНДАРТНЫЙ",
+                product_info: [
+                    {
+                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
+                        count: 1500,
+                        fact: 1400,
+                    },
+                    {
+                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
+                        count: 2500,
+                        fact: 2496,
+                    },
                 ],
-                count: 2520,
-                fact: 2500,
                 act_of_acceptance: 12,
                 delivery_date: "05-07-2025",
             },
@@ -190,13 +226,18 @@ export const OrdersPages = () => {
                 full_name: "Qodir Berdiyorov",
                 phone_number: "+998904587962",
                 status: 10,
-                product_name: [
-                    "FANTA APELSIN PET 1L 1X6 СМРКД",
-                    "FUSE PEACH PET 0,5L 1X12 SAM",
-                    "ПАЛЛЕТ СТАНДАРТНЫЙ",
+                product_info: [
+                    {
+                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
+                        count: 1500,
+                        fact: 1400,
+                    },
+                    {
+                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
+                        count: 2500,
+                        fact: 2496,
+                    },
                 ],
-                count: 2520,
-                fact: 2500,
                 act_of_acceptance: 12,
                 delivery_date: "05-07-2025",
             },
@@ -253,6 +294,7 @@ export const OrdersPages = () => {
                         onDownload={(row) => handleDownload(row.original)}
                         paginationProps={{ totalPages: data?.pages }}
                         numeration
+                        viewAll
                     />
                 )}
             </div>

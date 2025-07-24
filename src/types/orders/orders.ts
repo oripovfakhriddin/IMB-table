@@ -1,3 +1,8 @@
+type ProductType = {
+    name: string
+    count: number
+    fact: number
+}
 type OrderType = {
     id: number
     dateSend: string
@@ -8,9 +13,7 @@ type OrderType = {
     full_name: string
     phone_number: string
     status: number | string
-    product_name: string[]
-    count: number
-    fact: number
+    product_info: ProductType[]
     act_of_acceptance: number
     delivery_date: string
 }

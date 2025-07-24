@@ -3,11 +3,15 @@ import { DatePicker } from "@/components/ui/datepicker"
 import { Input } from "@/components/ui/input"
 import React, { useState } from "react"
 
+type InputPropsCandF = {
+    row: ProductType
+}
+
 type InputProps = {
     row: OrderType
 }
 
-export const InputCount = ({ row }: InputProps) => {
+export const InputCount = ({ row }: InputPropsCandF) => {
     const [count, setCount] = useState(row?.count)
     return (
         <Input
@@ -19,7 +23,7 @@ export const InputCount = ({ row }: InputProps) => {
     )
 }
 
-export const InputFact = ({ row }: InputProps) => {
+export const InputFact = ({ row }: InputPropsCandF) => {
     const [fact, setFact] = useState(row?.fact)
     return (
         <Input
