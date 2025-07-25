@@ -27,12 +27,16 @@ import { InputCount, InputFact } from "./inputs"
 type Props = {
     item: OrderType
     onDownload: (item: OrderType) => void
+    onView: (item: OrderType) => void
 }
 
-function OrderCard({ item, onDownload }: Props) {
+function OrderCard({ item, onDownload, onView }: Props) {
     const columns = useOrderSubColumns()
     return (
-        <Card className="px-4 pb-6 pt-2 space-y-4 cursor-pointer hover:shadow-md hover:scale-[101%] transition-all">
+        <Card
+            onClick={() => onView(item)}
+            className="px-4 pb-6 pt-2 space-y-4 cursor-pointer hover:shadow-md hover:scale-[101%] transition-all"
+        >
             <CardHeader className="flex flex-row p-0 pb-2 border-b border-b-muted justify-between items-center gap-3 w-full">
                 <span>#{item.id}</span>
                 <div className="flex items-center gap-2">
@@ -187,47 +191,11 @@ function OrderCard({ item, onDownload }: Props) {
                 </div>
                 <div className="flex justify-between items-center gap-3 text-sm ">
                     <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
-                        <Calendar size={16} className="text-primary" />
-                        <span>Jo'natilgan sana:</span>
-                    </div>
-                    <span className="line-clamp-1 break-all">
-                        {item.dateSend}
-                    </span>
-                </div>
-                <div className="flex justify-between items-center gap-3 text-sm ">
-                    <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
-                        <Flag size={16} className="text-primary" />
-                        <span>Yetkazilgan sana:</span>
-                    </div>
-                    <span className="line-clamp-1 break-all">
-                        {item.delivery_date}
-                    </span>
-                </div>
-                <div className="flex justify-between items-center gap-3 text-sm ">
-                    <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
                         <MapPinHouse size={16} className="text-primary" />
                         <span>Yo'nalish nomi:</span>
                     </div>
                     <span className="line-clamp-1 break-all">
                         {item.direction_name || "-"}
-                    </span>
-                </div>
-                <div className="flex justify-between items-center gap-3 text-sm ">
-                    <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
-                        <LocateFixed size={16} className="text-primary" />
-                        <span>Yo'nalish raqami:</span>
-                    </div>
-                    <span className="line-clamp-1 break-all">
-                        {item.direction || "-"}
-                    </span>
-                </div>
-                <div className="flex justify-between items-center gap-3 text-sm ">
-                    <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
-                        <Truck size={16} className="text-primary" />
-                        <span>Qabul qilingan:</span>
-                    </div>
-                    <span className="line-clamp-1 break-all">
-                        {item.act_of_acceptance || "-"}
                     </span>
                 </div>
             </CardContent>

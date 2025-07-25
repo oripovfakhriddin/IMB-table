@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as MainImport } from './routes/_main'
 import { Route as MainIndexImport } from './routes/_main/index'
+import { Route as MainDetailIdImport } from './routes/_main/detail/$id'
 
 // Create/Update Routes
 
@@ -24,6 +25,12 @@ const MainRoute = MainImport.update({
 const MainIndexRoute = MainIndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => MainRoute,
+} as any)
+
+const MainDetailIdRoute = MainDetailIdImport.update({
+  id: '/detail/$id',
+  path: '/detail/$id',
   getParentRoute: () => MainRoute,
 } as any)
 
@@ -45,6 +52,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MainIndexImport
       parentRoute: typeof MainImport
     }
+    '/_main/detail/$id': {
+      id: '/_main/detail/$id'
+      path: '/detail/$id'
+      fullPath: '/detail/$id'
+      preLoaderRoute: typeof MainDetailIdImport
+      parentRoute: typeof MainImport
+    }
   }
 }
 
@@ -52,10 +66,12 @@ declare module '@tanstack/react-router' {
 
 interface MainRouteChildren {
   MainIndexRoute: typeof MainIndexRoute
+  MainDetailIdRoute: typeof MainDetailIdRoute
 }
 
 const MainRouteChildren: MainRouteChildren = {
   MainIndexRoute: MainIndexRoute,
+  MainDetailIdRoute: MainDetailIdRoute,
 }
 
 const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)
@@ -63,24 +79,27 @@ const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)
 export interface FileRoutesByFullPath {
   '': typeof MainRouteWithChildren
   '/': typeof MainIndexRoute
+  '/detail/$id': typeof MainDetailIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof MainIndexRoute
+  '/detail/$id': typeof MainDetailIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/_main': typeof MainRouteWithChildren
   '/_main/': typeof MainIndexRoute
+  '/_main/detail/$id': typeof MainDetailIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '' | '/'
+  fullPaths: '' | '/' | '/detail/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/_main' | '/_main/'
+  to: '/' | '/detail/$id'
+  id: '__root__' | '/_main' | '/_main/' | '/_main/detail/$id'
   fileRoutesById: FileRoutesById
 }
 
@@ -110,11 +129,16 @@ export const routeTree = rootRoute
     "/_main": {
       "filePath": "_main.tsx",
       "children": [
-        "/_main/"
+        "/_main/",
+        "/_main/detail/$id"
       ]
     },
     "/_main/": {
       "filePath": "_main/index.tsx",
+      "parent": "/_main"
+    },
+    "/_main/detail/$id": {
+      "filePath": "_main/detail/$id.tsx",
       "parent": "/_main"
     }
   }

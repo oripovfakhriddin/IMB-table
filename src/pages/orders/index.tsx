@@ -3,7 +3,7 @@ import { DataTable } from "@/components/ui/datatable"
 import ParamTabs from "@/components/as-params/tabs"
 import { LayoutList, Table } from "lucide-react"
 import { useModal } from "@/hooks/useModal"
-import { useSearch } from "@tanstack/react-router"
+import { useNavigate, useSearch } from "@tanstack/react-router"
 import { useGet } from "@/hooks/useGet"
 import { useTypedStoreData } from "@/hooks/useStoreData"
 import OrderCard from "./order-card"
@@ -63,8 +63,16 @@ export const OrdersPages = () => {
     const { data: datata, isLoading } = useGet<OrdersTypeResults>("dssdds", {
         params,
     })
+    const navigate = useNavigate()
 
     const handleDownload = (item: OrderType) => {}
+
+    const handleNavigate = (item: OrderType) => {
+        navigate({
+            to: "/detail/$id",
+            params: { id: item.id.toString() },
+        })
+    }
 
     const columns = useOrderColumns()
     return (
@@ -93,6 +101,9 @@ export const OrdersPages = () => {
                                           onDownload={(item) =>
                                               handleDownload(item)
                                           }
+                                          onView={(item) =>
+                                              handleNavigate(item)
+                                          }
                                       />
                                   ))}
                         </div>
@@ -104,6 +115,9 @@ export const OrdersPages = () => {
                         data={data?.results}
                         loading={isLoading}
                         onDownload={(row) => handleDownload(row.original)}
+                        onRowClick={(item) => {
+                            handleNavigate(item)
+                        }}
                         paginationProps={{ totalPages: data?.pages }}
                         numeration
                         viewAll

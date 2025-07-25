@@ -88,7 +88,12 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                                     {`Mahsulotlar: (${row.original.product_info?.length})`}
                                 </Button>
                             </PopoverTrigger>
-                            <PopoverContent className="w-1/2 md:w-full">
+                            <PopoverContent
+                                className="w-1/2 md:w-full"
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                }}
+                            >
                                 <DataTable
                                     columns={columns}
                                     data={row.original.product_info}
@@ -125,7 +130,15 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                 header: "Qabul qilingan raqam",
                 accessorKey: "act_of_acceptance",
                 enableSorting: true,
-                cell: ({ row }) => <InputAcceptance row={row.original} />,
+                cell: ({ row }) => (
+                    <div
+                        onClick={(e) => {
+                            e.stopPropagation()
+                        }}
+                    >
+                        <InputAcceptance row={row.original} />
+                    </div>
+                ),
             },
             {
                 header: "Yetkazilgan sana",
