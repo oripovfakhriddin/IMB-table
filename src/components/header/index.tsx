@@ -22,7 +22,7 @@ const Header = ({ rigthChildren, leftChildren, title }: Props) => {
                 <div className="flex gap-3 items-center sm:min-w-[180px]">
                     <Link
                         to="/"
-                        className="text-2xl text-primary  font-bold sm:block hidden"
+                        className="text-2xl text-primary  font-bold "
                     >
                         IMB TECH
                     </Link>
@@ -33,7 +33,9 @@ const Header = ({ rigthChildren, leftChildren, title }: Props) => {
                 {leftChildren ? leftChildren : null}
             </div>
             <hgroup className="flex items-center gap-4">
-                {rigthChildren ? rigthChildren : null}
+                <div className="hidden md:block">
+                    {rigthChildren ? rigthChildren : null}
+                </div>
                 <ThemeColorToggle />
                 <DropdownMenu>
                     <div className="relative h-10">

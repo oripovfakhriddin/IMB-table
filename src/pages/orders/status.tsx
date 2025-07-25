@@ -21,7 +21,7 @@ function Status({ row }: Props) {
     return (
         <div>
             <Select
-                className={statusColor[status]}
+                className={`${statusColor[status]} min-w-36`}
                 options={statusOptions.filter((option) => option.value !== "")}
                 label={statusText[status] || "Tanlang"}
                 value={status}

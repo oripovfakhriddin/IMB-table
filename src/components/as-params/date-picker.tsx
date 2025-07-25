@@ -65,7 +65,7 @@ export default function ParamDatePicker({
     return (
         <div
             className={cn(
-                "relative flex items-center justify-between min-w-52 max-w-[280px]",
+                "relative flex items-center justify-between min-w-52 ",
                 className,
             )}
         >

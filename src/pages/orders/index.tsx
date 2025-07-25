@@ -10,6 +10,8 @@ import OrderCard from "./order-card"
 import EmptyBox from "@/components/custom/empty-box"
 import OrderCardSkeletion from "./order-card-skeletion"
 import ParamPagination from "@/components/as-params/pagination"
+import OrderFilter from "./order-filter"
+import data from "@/constants/data"
 
 export const statusColor: { [key: string]: string } = {
     "10": "text-green-500",
@@ -63,190 +65,6 @@ export const OrdersPages = () => {
         params,
     })
 
-    const data = {
-        pages: 1,
-        results: [
-            {
-                id: 1,
-                dateSend: "07-02-2025",
-                direction: 1254,
-                direction_name: "Zamin Drinks OOO",
-                ttn_number: 2589637,
-                number_machine: "50Z986AB",
-                full_name: "Toshtemir Hasanov",
-                phone_number: "+998901234567",
-                status: 20,
-                product_info: [
-                    {
-                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
-                        count: 1500,
-                        fact: 1400,
-                    },
-                    {
-                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
-                        count: 2500,
-                        fact: 2496,
-                    },
-                ],
-                act_of_acceptance: 125,
-                delivery_date: "05-07-2024",
-            },
-            {
-                id: 2,
-                dateSend: "07-05-2020",
-                direction: 1254,
-                direction_name: "Family Drinks OOO",
-                ttn_number: 5142356,
-                number_machine: "01Z125ZH",
-                full_name: "Behzod Karimov",
-                phone_number: "+998915632356",
-                status: 30,
-                product_info: [
-                    {
-                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
-                        count: 1500,
-                        fact: 1400,
-                    },
-                    {
-                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
-                        count: 2500,
-                        fact: 2496,
-                    },
-                ],
-                act_of_acceptance: 136,
-                delivery_date: "05-08-2020",
-            },
-            {
-                id: 3,
-                dateSend: "07-02-2025",
-                direction: 1254,
-                direction_name: "Zamin Drinks OOO",
-                ttn_number: 5142356,
-                number_machine: "01Z529ZH",
-                full_name: "Oripov Faxriddin",
-                phone_number: "+998944555766",
-                status: 20,
-                product_info: [
-                    {
-                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
-                        count: 1500,
-                        fact: 1400,
-                    },
-                    {
-                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
-                        count: 2500,
-                        fact: 2496,
-                    },
-                ],
-                act_of_acceptance: 152,
-                delivery_date: "10-07-2025",
-            },
-            {
-                id: 4,
-                dateSend: "07-02-2025",
-                direction: 1254,
-                direction_name: "Zamin Drinks OOO",
-                ttn_number: 5142356,
-                number_machine: "01Z529ZH",
-                full_name: "Qodir Berdiyorov",
-                phone_number: "+998904587962",
-                status: 10,
-                product_info: [
-                    {
-                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
-                        count: 1500,
-                        fact: 1400,
-                    },
-                    {
-                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
-                        count: 2500,
-                        fact: 2496,
-                    },
-                ],
-                act_of_acceptance: 12,
-                delivery_date: "05-07-2025",
-            },
-            {
-                id: 5,
-                dateSend: "07-02-2025",
-                direction: 1254,
-                direction_name: "Zamin Drinks OOO",
-                ttn_number: 5142356,
-                number_machine: "01Z529ZH",
-                full_name: "Qodir Berdiyorov",
-                phone_number: "+998904587962",
-                status: 10,
-                product_info: [
-                    {
-                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
-                        count: 1500,
-                        fact: 1400,
-                    },
-                    {
-                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
-                        count: 2500,
-                        fact: 2496,
-                    },
-                ],
-                act_of_acceptance: 12,
-                delivery_date: "05-07-2025",
-            },
-            {
-                id: 6,
-                dateSend: "07-02-2025",
-                direction: 1254,
-                direction_name: "Zamin Drinks OOO",
-                ttn_number: 5142356,
-                number_machine: "01Z529ZH",
-                full_name: "Qodir Berdiyorov",
-                phone_number: "+998904587962",
-                status: 30,
-                product_info: [
-                    {
-                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
-                        count: 1500,
-                        fact: 1400,
-                    },
-                    {
-                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
-                        count: 2500,
-                        fact: 2496,
-                    },
-                ],
-                act_of_acceptance: 12,
-                delivery_date: "05-07-2025",
-            },
-            {
-                id: 7,
-                dateSend: "07-02-2025",
-                direction: 1254,
-                direction_name: "Zamin Drinks OOO",
-                ttn_number: 5142356,
-                number_machine: "01Z529ZH",
-                full_name: "Qodir Berdiyorov",
-                phone_number: "+998904587962",
-                status: 10,
-                product_info: [
-                    {
-                        name: "FANTA APELSIN PET 1L 1X6 СМРКД",
-                        count: 1500,
-                        fact: 1400,
-                    },
-                    {
-                        name: "FUSE PEACH PET 0,5L 1X12 SAM",
-                        count: 2500,
-                        fact: 2496,
-                    },
-                ],
-                act_of_acceptance: 12,
-                delivery_date: "05-07-2025",
-            },
-        ],
-        next: 2,
-        count: 7,
-        previous: 1,
-    }
-
     const handleDownload = (item: OrderType) => {}
 
     const columns = useOrderColumns()
@@ -257,6 +75,9 @@ export const OrdersPages = () => {
                     <h1 className="text-3xl">Ro'yhatlar</h1>
                     <ParamTabs options={tabs} />
                 </div>
+                <div className="md:hidden mb-3">
+                    <OrderFilter />
+                </div>
 
                 {search.page_tabs === "card" ? (
                     <div>
@@ -266,9 +87,9 @@ export const OrdersPages = () => {
                                       <OrderCardSkeletion key={index} />
                                   ))
                                 : !!data?.results?.length &&
-                                  data?.results?.map((item) => (
+                                  data?.results?.map((item, index) => (
                                       <OrderCard
-                                          key={item.id}
+                                          key={index}
                                           item={item}
                                           onDownload={(item) =>
                                               handleDownload(item)

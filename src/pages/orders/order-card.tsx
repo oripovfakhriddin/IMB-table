@@ -20,6 +20,8 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import Status from "./status"
+import { DataTable } from "@/components/ui/datatable"
+import { useOrderSubColumns } from "./sub-table/columns"
 
 type Props = {
     item: OrderType
@@ -27,6 +29,8 @@ type Props = {
 }
 
 function OrderCard({ item, onDownload }: Props) {
+
+    const columns = useOrderSubColumns()
     return (
         <Card className="px-4 pb-6 pt-2 space-y-4 cursor-pointer hover:shadow-md hover:scale-[101%] transition-all">
             <CardHeader className="flex flex-row p-0 pb-2 border-b border-b-muted justify-between items-center gap-3 w-full">
@@ -66,17 +70,13 @@ function OrderCard({ item, onDownload }: Props) {
                                             {`Ko'rish (${item.product_info?.length})`}
                                         </Button>
                                     </PopoverTrigger>
-                                    <PopoverContent className="w-64">
-                                        <div className="flex flex-col gap-2 text-sm ">
-                                            {item?.product_info?.map(
-                                                (item, index) => (
-                                                    <span>
-                                                        {index + 1}.{" "}
-                                                        {item?.name}
-                                                    </span>
-                                                ),
-                                            )}
-                                        </div>
+                                    <PopoverContent className="w-1/2 md:w-full">
+                                        <DataTable
+                                            columns={columns}
+                                            data={item?.product_info}
+                                            numeration
+                                            viewAll
+                                        />
                                     </PopoverContent>
                                 </Popover>
                             ) : (

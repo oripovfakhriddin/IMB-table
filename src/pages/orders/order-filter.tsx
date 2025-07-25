@@ -22,12 +22,14 @@ function OrderFilter() {
     })
 
     return (
-        <div className="flex items-center gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             <ParamInput
+                name="search"
+                type="text"
                 searchKey="q"
-                aria-label="Search"
                 placeholder="Qidiruv..."
-                className="w-[200px]"
+                fullWidth
+                className="md:w-[200px]"
             />
             <ParamCombobox
                 options={dataUsers?.results || []}
@@ -35,7 +37,7 @@ function OrderFilter() {
                 labelKey="full_name"
                 label="Mijoz ismi"
                 paramName="customer"
-                className="w-[200px]"
+                className="md:w-[200px] w-full"
                 onSearchChange={(val) =>
                     setSearch((prev) => ({ ...prev, customer: val }))
                 }
@@ -46,13 +48,13 @@ function OrderFilter() {
                 labelKey="product_name"
                 label="Mahsulot nomi"
                 paramName="product"
-                className="w-[200px]"
+                className="md:w-[200px] w-full"
                 onSearchChange={(val) =>
                     setSearch((prev) => ({ ...prev, product: val }))
                 }
             />
             <ParamDatePicker
-                className="w-[200px]"
+                className="md:w-[200px] w-full"
                 placeholder="Jo'natilgan sana"
             />
         </div>
