@@ -88,7 +88,7 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                                     {`Mahsulotlar: (${row.original.product_info?.length})`}
                                 </Button>
                             </PopoverTrigger>
-                            <PopoverContent className="!w-full">
+                            <PopoverContent className="w-1/2 md:w-full">
                                 <DataTable
                                     columns={columns}
                                     data={row.original.product_info}

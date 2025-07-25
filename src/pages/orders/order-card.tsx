@@ -22,6 +22,7 @@ import {
 import Status from "./status"
 import { DataTable } from "@/components/ui/datatable"
 import { useOrderSubColumns } from "./sub-table/columns"
+import { InputCount, InputFact } from "./inputs"
 
 type Props = {
     item: OrderType
@@ -29,7 +30,6 @@ type Props = {
 }
 
 function OrderCard({ item, onDownload }: Props) {
-
     const columns = useOrderSubColumns()
     return (
         <Card className="px-4 pb-6 pt-2 space-y-4 cursor-pointer hover:shadow-md hover:scale-[101%] transition-all">
@@ -70,13 +70,76 @@ function OrderCard({ item, onDownload }: Props) {
                                             {`Ko'rish (${item.product_info?.length})`}
                                         </Button>
                                     </PopoverTrigger>
-                                    <PopoverContent className="w-1/2 md:w-full">
-                                        <DataTable
-                                            columns={columns}
-                                            data={item?.product_info}
-                                            numeration
-                                            viewAll
-                                        />
+                                    <PopoverContent className="!w-3/4 !min-w-80 !md:w-full">
+                                        <Card className="px-4 pb-6 pt-2 space-y-4 cursor-pointer hover:shadow-md hover:scale-[101%] transition-all">
+                                            <CardContent className="p-0 space-y-2">
+                                                {item?.product_info?.map(
+                                                    (i, index) => (
+                                                        <>
+                                                            <div className="flex justify-between flex-col gap-3 text-sm ">
+                                                                <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
+                                                                    <span>
+                                                                        {index +
+                                                                            1}
+                                                                        {" => "}
+                                                                        Mahsulot
+                                                                        nomi:
+                                                                    </span>
+                                                                </div>
+                                                                <span className="line-clamp-1 break-all">
+                                                                    {i?.name ||
+                                                                        "-"}
+                                                                </span>
+                                                            </div>
+                                                            <div className="flex flex-col md:flex-row justify-between md:items-center gap-3 text-sm">
+                                                                <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
+                                                                    <Container
+                                                                        size={
+                                                                            16
+                                                                        }
+                                                                        className="text-primary"
+                                                                    />
+                                                                    <span>
+                                                                        Mahsulot
+                                                                        miqdori
+                                                                    </span>
+                                                                </div>
+                                                                <span className="line-clamp-1 break-all">
+                                                                    <InputCount
+                                                                        row={i}
+                                                                    />
+                                                                </span>
+                                                            </div>
+                                                            <div className="flex flex-col md:flex-row justify-between md:items-center gap-3 text-sm">
+                                                                <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
+                                                                    <Container
+                                                                        size={
+                                                                            16
+                                                                        }
+                                                                        className="text-primary"
+                                                                    />
+                                                                    <span>
+                                                                        Mahsulot
+                                                                        fakt
+                                                                        miqdori:
+                                                                    </span>
+                                                                </div>
+                                                                <span className="line-clamp-1 break-all">
+                                                                    {
+                                                                        <InputFact
+                                                                            row={
+                                                                                i
+                                                                            }
+                                                                        />
+                                                                    }
+                                                                </span>
+                                                            </div>
+                                                            <hr />
+                                                        </>
+                                                    ),
+                                                )}
+                                            </CardContent>
+                                        </Card>
                                     </PopoverContent>
                                 </Popover>
                             ) : (
@@ -156,24 +219,6 @@ function OrderCard({ item, onDownload }: Props) {
                     </div>
                     <span className="line-clamp-1 break-all">
                         {item.direction || "-"}
-                    </span>
-                </div>
-                <div className="flex justify-between items-center gap-3 text-sm ">
-                    <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
-                        <Container size={16} className="text-primary" />
-                        <span>Miqdori:</span>
-                    </div>
-                    <span className="line-clamp-1 break-all">
-                        {item?.product_info[0].count || "-"}
-                    </span>
-                </div>
-                <div className="flex justify-between items-center gap-3 text-sm ">
-                    <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
-                        <Container size={16} className="text-primary" />
-                        <span>Fakt miqdori:</span>
-                    </div>
-                    <span className="line-clamp-1 break-all">
-                        {item?.product_info[0]?.fact || "-"}
                     </span>
                 </div>
                 <div className="flex justify-between items-center gap-3 text-sm ">

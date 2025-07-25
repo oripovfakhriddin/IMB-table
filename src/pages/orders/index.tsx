@@ -9,7 +9,6 @@ import { useTypedStoreData } from "@/hooks/useStoreData"
 import OrderCard from "./order-card"
 import EmptyBox from "@/components/custom/empty-box"
 import OrderCardSkeletion from "./order-card-skeletion"
-import ParamPagination from "@/components/as-params/pagination"
 import OrderFilter from "./order-filter"
 import data from "@/constants/data"
 
@@ -81,7 +80,7 @@ export const OrdersPages = () => {
 
                 {search.page_tabs === "card" ? (
                     <div>
-                        <div className="grid 2xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+                        <div className="grid  lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
                             {isLoading
                                 ? Array.from({ length: 20 }).map((_, index) => (
                                       <OrderCardSkeletion key={index} />
@@ -97,14 +96,6 @@ export const OrdersPages = () => {
                                       />
                                   ))}
                         </div>
-                        {!!data?.results?.length && (
-                            <div className="my-4 flex justify-center">
-                                <ParamPagination
-                                    disabled={isLoading}
-                                    totalPages={data.pages}
-                                />
-                            </div>
-                        )}
                         {!data?.results?.length && <EmptyBox />}
                     </div>
                 ) : (

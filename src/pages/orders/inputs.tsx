@@ -16,7 +16,7 @@ export const InputCount = ({ row }: InputPropsCandF) => {
     return (
         <Input
             type="number"
-            className="w-[100px]"
+            className="md:w-[100px] w-full"
             value={count}
             onChange={(e) => setCount(Number(e.target.value))}
         />
@@ -28,7 +28,7 @@ export const InputFact = ({ row }: InputPropsCandF) => {
     return (
         <Input
             type="number"
-            className="w-[100px]"
+            className="md:w-[100px] w-full"
             value={fact}
             onChange={(e) => {
                 setFact(Number(e.target.value))
