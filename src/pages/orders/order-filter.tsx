@@ -35,7 +35,7 @@ function OrderFilter() {
                 options={dataUsers?.results || []}
                 valueKey="id"
                 labelKey="full_name"
-                label="Mijoz ismi"
+                label="Haydovchi ismi"
                 paramName="customer"
                 className="md:w-[200px] w-full"
                 onSearchChange={(val) =>
@@ -55,7 +55,7 @@ function OrderFilter() {
             />
             <ParamDatePicker
                 className="md:w-[200px] w-full"
-                placeholder="Jo'natilgan sana"
+                placeholder="Sana bo'yicha"
             />
         </div>
     )

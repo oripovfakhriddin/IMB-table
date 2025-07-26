@@ -68,43 +68,39 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                 cell: ({ row }) => <Status row={row.original} />,
             },
             {
-                header: "Mahsulot nomi",
-                accessorKey: "product_name",
+                header: "Mahsulotlar",
+                accessorKey: "product_info",
                 enableSorting: true,
-                cell: ({ row }) =>
-                    row.original.product_info?.length > 1 ? (
-                        <Popover>
-                            <PopoverTrigger asChild>
-                                <Button
-                                    variant={
-                                        row.original.product_info?.length > 1
-                                            ? "secondary"
-                                            : "ghost"
-                                    }
-                                    onClick={(e) => {
-                                        e.stopPropagation()
-                                    }}
-                                >
-                                    {`Mahsulotlar: (${row.original.product_info?.length})`}
-                                </Button>
-                            </PopoverTrigger>
-                            <PopoverContent
-                                className="w-1/2 md:w-full"
+                cell: ({ row }) => (
+                    <Popover>
+                        <PopoverTrigger asChild>
+                            <Button
+                                variant={"secondary"}
                                 onClick={(e) => {
                                     e.stopPropagation()
                                 }}
                             >
-                                <DataTable
-                                    columns={columns}
-                                    data={row.original.product_info}
-                                    numeration
-                                    viewAll
-                                />
-                            </PopoverContent>
-                        </Popover>
-                    ) : (
-                        row.original.product_info?.[0]?.name
-                    ),
+                                {`Ko'rish: (${row.original.product_info?.length})`}
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent
+                            className="w-1/2 md:w-full"
+                            onClick={(e) => {
+                                e.stopPropagation()
+                            }}
+                        >
+                            <DataTable
+                                columns={columns}
+                                data={row.original.product_info}
+                                numeration
+                                viewAll
+                            />
+                            <Button className="w-full">
+                                Mahsulot qo'shish
+                            </Button>
+                        </PopoverContent>
+                    </Popover>
+                ),
             },
             {
                 header: "Miqdori",

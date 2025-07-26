@@ -14,13 +14,13 @@ const data = {
             product_info: [
                 {
                     name: "FANTA APELSIN PET 1L 1X6 СМРКД",
-                    count: 1500,
-                    fact: 1400,
+                    count: 4563,
+                    fact: 4253,
                 },
                 {
                     name: "FUSE PEACH PET 0,5L 1X12 SAM",
-                    count: 2500,
-                    fact: 2496,
+                    count: 7812,
+                    fact: 7612,
                 },
             ],
             act_of_acceptance: 125,
@@ -37,11 +37,6 @@ const data = {
             phone_number: "+998915632356",
             status: 30,
             product_info: [
-                {
-                    name: "FANTA APELSIN PET 1L 1X6 СМРКД",
-                    count: 1500,
-                    fact: 1400,
-                },
                 {
                     name: "FUSE PEACH PET 0,5L 1X12 SAM",
                     count: 2500,
@@ -89,13 +84,17 @@ const data = {
             product_info: [
                 {
                     name: "FANTA APELSIN PET 1L 1X6 СМРКД",
-                    count: 1500,
-                    fact: 1400,
+                    count: 1543,
+                    fact: 1254,
                 },
                 {
                     name: "FUSE PEACH PET 0,5L 1X12 SAM",
-                    count: 2500,
-                    fact: 2496,
+                    count: 5236,
+                    fact: 5036,
+                },{
+                    name: "FUSE PEACH PET ",
+                    count: 4521,
+                    fact: 4142,
                 },
             ],
             act_of_acceptance: 12,
@@ -144,8 +143,18 @@ const data = {
                 },
                 {
                     name: "FUSE PEACH PET 0,5L 1X12 SAM",
-                    count: 2500,
-                    fact: 2496,
+                    count: 1563,
+                    fact: 4589,
+                },
+                {
+                    name: "FUSE PEACH PET 0,5L 1X12 SAM",
+                    count: 7456,
+                    fact: 1546,
+                },
+                {
+                    name: "FUSE PEACH PET 0,5L 1X12 SAM",
+                    count: 1524,
+                    fact: 9763,
                 },
             ],
             act_of_acceptance: 12,
