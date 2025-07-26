@@ -15,8 +15,14 @@ import {
 } from "./inputs"
 import { DataTable } from "@/components/ui/datatable"
 import { useOrderSubColumns } from "./sub-table/columns"
+import { useModal } from "@/hooks/useModal"
 
 export const useOrderColumns = (): ColumnDef<OrderType>[] => {
+    const { openModal } = useModal("product-modal")
+
+    const handleAdd = () => {
+        openModal()
+    }
     const columns = useOrderSubColumns()
     return useMemo(
         () => [
@@ -95,7 +101,7 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                                 numeration
                                 viewAll
                             />
-                            <Button className="w-full">
+                            <Button onClick={handleAdd} className="w-full">
                                 Mahsulot qo'shish
                             </Button>
                         </PopoverContent>

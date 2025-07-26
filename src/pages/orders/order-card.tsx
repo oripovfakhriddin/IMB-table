@@ -1,16 +1,12 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import {
-    Calendar,
     Car,
     Container,
     FileDigit,
     FileDown,
-    Flag,
-    LocateFixed,
     MapPinHouse,
     Package,
     Phone,
-    Truck,
     User,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -20,9 +16,8 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import Status from "./status"
-import { DataTable } from "@/components/ui/datatable"
-import { useOrderSubColumns } from "./sub-table/columns"
 import { InputCount, InputFact } from "./inputs"
+import { useModal } from "@/hooks/useModal"
 
 type Props = {
     item: OrderType
@@ -31,7 +26,11 @@ type Props = {
 }
 
 function OrderCard({ item, onDownload, onView }: Props) {
-    const columns = useOrderSubColumns()
+    const { openModal } = useModal("product-modal")
+
+    const handleAdd = () => {
+        openModal()
+    }
     return (
         <Card
             onClick={() => onView(item)}
@@ -69,7 +68,12 @@ function OrderCard({ item, onDownload, onView }: Props) {
                                         {`Ko'rish (${item.product_info?.length})`}
                                     </Button>
                                 </PopoverTrigger>
-                                <PopoverContent className="!w-3/4 !min-w-80 !md:w-full">
+                                <PopoverContent
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                    }}
+                                    className="!w-3/4 !min-w-80 !md:w-full"
+                                >
                                     <Card className="px-4 pb-6 pt-2 space-y-4 cursor-pointer hover:shadow-md hover:scale-[101%] transition-all">
                                         <CardContent className="p-0 space-y-2">
                                             {item?.product_info?.map(
@@ -130,7 +134,10 @@ function OrderCard({ item, onDownload, onView }: Props) {
                                                 ),
                                             )}
                                         </CardContent>
-                                        <Button className="w-full">
+                                        <Button
+                                            onClick={handleAdd}
+                                            className="w-full"
+                                        >
                                             Mahsulot qo'shish
                                         </Button>
                                     </Card>

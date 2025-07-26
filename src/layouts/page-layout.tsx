@@ -2,6 +2,7 @@ import Modal from "@/components/custom/modal"
 import Header from "@/components/header"
 import { useTypedStoreData } from "@/hooks/useStoreData"
 import { cn } from "@/lib/utils"
+import ProductCreate from "@/pages/orders/product-create"
 import { ReactNode } from "@tanstack/react-router"
 
 type Props = {
@@ -33,15 +34,15 @@ const PageLayout = ({
             <main className="flex xl:gap-2 px-3 md:px-4 pt-[75px] pb-4  relative ">
                 {children}
             </main>
-            {/* <Modal
+            <Modal
                 size="max-w-2xl"
-                title={`Yangi mijoz ${
+                title={`Yangi mahsulot ${
                     storeData?.id ? "tahrirlash" : "qo'shish"
                 } `}
-                modalKey="customer-modal"
+                modalKey="product-modal"
             >
-                <CustomerCreate />
-            </Modal> */}
+                <ProductCreate />
+            </Modal>
         </div>
     )
 }
