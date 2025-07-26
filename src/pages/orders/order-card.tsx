@@ -92,7 +92,7 @@ function OrderCard({ item, onDownload, onView }: Props) {
                                                                 {i?.name || "-"}
                                                             </span>
                                                         </div>
-                                                        <div className="flex flex-col md:flex-row justify-between md:items-center gap-3 text-sm">
+                                                        <div className="flex justify-between flex-col gap-3 text-sm ">
                                                             <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
                                                                 <Container
                                                                     size={16}
@@ -109,7 +109,7 @@ function OrderCard({ item, onDownload, onView }: Props) {
                                                                 />
                                                             </span>
                                                         </div>
-                                                        <div className="flex flex-col md:flex-row justify-between md:items-center gap-3 text-sm">
+                                                        <div className="flex justify-between flex-col gap-3 text-sm ">
                                                             <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
                                                                 <Container
                                                                     size={16}
