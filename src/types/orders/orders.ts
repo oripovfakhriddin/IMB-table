@@ -14,7 +14,7 @@ type OrderType = {
     phone_number: string
     status: number | string
     product_info: ProductType[]
-    act_of_acceptance: number
+    act_of_acceptance: string
     delivery_date: string
 }
 

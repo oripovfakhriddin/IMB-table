@@ -5,7 +5,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { ColumnDef } from "@tanstack/react-table"
-import { useMemo } from "react"
+import { Fragment, useMemo } from "react"
 import Status from "./status"
 import {
     InputAcceptance,
@@ -13,17 +13,12 @@ import {
     InputDeliveryDate,
     InputFact,
 } from "./inputs"
-import { DataTable } from "@/components/ui/datatable"
-import { useOrderSubColumns } from "./sub-table/columns"
 import { useModal } from "@/hooks/useModal"
+import { Card, CardContent } from "@/components/ui/card"
+import { Container } from "lucide-react"
+import { formatCarNumber } from "@/lib/utils"
 
 export const useOrderColumns = (): ColumnDef<OrderType>[] => {
-    const { openModal } = useModal("product-modal")
-
-    const handleAdd = () => {
-        openModal()
-    }
-    const columns = useOrderSubColumns()
     return useMemo(
         () => [
             {
@@ -54,7 +49,8 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                 header: "Mashina raqami",
                 accessorKey: "number_machine",
                 enableSorting: true,
-                cell: ({ row }) => row.original.number_machine || "-",
+                cell: ({ row }) =>
+                    formatCarNumber(row.original.number_machine) || "-",
             },
             {
                 header: "FIO",
@@ -71,7 +67,14 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
             {
                 header: "Status",
                 accessorKey: "status",
-                cell: ({ row }) => <Status row={row.original} />,
+                cell: ({ row }) =>
+                    row.original?.status === 10 ? (
+                        <p className="text-green-500">Success</p>
+                    ) : row.original.status === 20 ? (
+                        <p className="text-orange-500">Waiting</p>
+                    ) : (
+                        <p className="text-red-500">Cancel</p>
+                    ),
             },
             {
                 header: "Mahsulotlar",
@@ -80,30 +83,65 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                 cell: ({ row }) => (
                     <Popover>
                         <PopoverTrigger asChild>
-                            <Button
-                                variant={"secondary"}
-                                onClick={(e) => {
-                                    e.stopPropagation()
-                                }}
-                            >
-                                {`Ko'rish: (${row.original.product_info?.length})`}
+                            <Button variant="secondary">
+                                {`Ko'rish (${row.original.product_info?.length})`}
                             </Button>
                         </PopoverTrigger>
                         <PopoverContent
-                            className="w-1/2 md:w-full"
-                            onClick={(e) => {
-                                e.stopPropagation()
-                            }}
+                            className="!w-3/4 !min-w-80 !md:w-full !p-0 max-h-[50vh] overflow-y-auto no-scrollbar"
+                            side="bottom"
                         >
-                            <DataTable
-                                columns={columns}
-                                data={row.original.product_info}
-                                numeration
-                                viewAll
-                            />
-                            <Button onClick={handleAdd} className="w-full">
-                                Mahsulot qo'shish
-                            </Button>
+                            <Card className="px-4 pb-6 pt-2 space-y-4 cursor-pointer hover:shadow-md hover:scale-[101%] transition-all">
+                                <CardContent className="p-0 space-y-2">
+                                    {row.original.product_info?.map(
+                                        (i, index) => (
+                                            <Fragment key={index}>
+                                                <div className="flex justify-between flex-col gap-1 text-sm ">
+                                                    <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
+                                                        <span>
+                                                            {index + 1}
+                                                            {". "}
+                                                            Mahsulot nomi:
+                                                        </span>
+                                                    </div>
+                                                    <span className="line-clamp-1 break-all">
+                                                        {i?.name || "-"}
+                                                    </span>
+                                                </div>
+                                                <div className="flex justify-between items-center gap-3 text-sm ">
+                                                    <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
+                                                        <Container
+                                                            size={16}
+                                                            className="text-primary"
+                                                        />
+                                                        <span>
+                                                            Umumiy miqdori:
+                                                        </span>
+                                                    </div>
+                                                    <span className="line-clamp-1 break-all">
+                                                        {i?.count || "-"}
+                                                    </span>
+                                                </div>
+                                                <div className="flex justify-between items-center gap-3 text-sm ">
+                                                    <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
+                                                        <Container
+                                                            size={16}
+                                                            className="text-primary"
+                                                        />
+                                                        <span>
+                                                            Fakt miqdori:
+                                                        </span>
+                                                    </div>
+                                                    <span className="line-clamp-1 break-all">
+                                                        {i?.fact || "-"}
+                                                    </span>
+                                                </div>
+                                                <hr />
+                                            </Fragment>
+                                        ),
+                                    )}
+                                </CardContent>
+                            </Card>
                         </PopoverContent>
                     </Popover>
                 ),
@@ -132,21 +170,13 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                 header: "Qabul qilingan raqam",
                 accessorKey: "act_of_acceptance",
                 enableSorting: true,
-                cell: ({ row }) => (
-                    <div
-                        onClick={(e) => {
-                            e.stopPropagation()
-                        }}
-                    >
-                        <InputAcceptance row={row.original} />
-                    </div>
-                ),
+                cell: ({ row }) => row.original.act_of_acceptance,
             },
             {
                 header: "Yetkazilgan sana",
                 accessorKey: "delivery_date",
                 enableSorting: true,
-                cell: ({ row }) => <InputDeliveryDate row={row.original} />,
+                cell: ({ row }) => row.original.delivery_date,
             },
         ],
         [],

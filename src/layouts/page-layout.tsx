@@ -35,13 +35,15 @@ const PageLayout = ({
                 {children}
             </main>
             <Modal
-                size="max-w-2xl"
-                title={`Yangi mahsulot ${
+                size="max-w-xl"
+                title={`Buyurtmani ${
                     storeData?.id ? "tahrirlash" : "qo'shish"
                 } `}
                 modalKey="product-modal"
             >
-                <ProductCreate />
+                <div className="max-h-[75vh] overflow-y-auto no-scrollbar p-1">
+                    <ProductCreate />
+                </div>
             </Modal>
         </div>
     )

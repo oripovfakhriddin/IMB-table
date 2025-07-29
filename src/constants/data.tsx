@@ -23,7 +23,7 @@ const data = {
                     fact: 7612,
                 },
             ],
-            act_of_acceptance: 125,
+            act_of_acceptance: "125",
             delivery_date: "05-07-2024",
         },
         {
@@ -43,7 +43,7 @@ const data = {
                     fact: 2496,
                 },
             ],
-            act_of_acceptance: 136,
+            act_of_acceptance: " 136",
             delivery_date: "05-08-2020",
         },
         {
@@ -68,7 +68,7 @@ const data = {
                     fact: 2496,
                 },
             ],
-            act_of_acceptance: 152,
+            act_of_acceptance: "152",
             delivery_date: "10-07-2025",
         },
         {
@@ -91,13 +91,14 @@ const data = {
                     name: "FUSE PEACH PET 0,5L 1X12 SAM",
                     count: 5236,
                     fact: 5036,
-                },{
+                },
+                {
                     name: "FUSE PEACH PET ",
                     count: 4521,
                     fact: 4142,
                 },
             ],
-            act_of_acceptance: 12,
+            act_of_acceptance: "12",
             delivery_date: "05-07-2025",
         },
         {
@@ -122,7 +123,7 @@ const data = {
                     fact: 2496,
                 },
             ],
-            act_of_acceptance: 12,
+            act_of_acceptance: "12",
             delivery_date: "05-07-2025",
         },
         {
@@ -157,7 +158,7 @@ const data = {
                     fact: 9763,
                 },
             ],
-            act_of_acceptance: 12,
+            act_of_acceptance: "12",
             delivery_date: "05-07-2025",
         },
         {
@@ -182,7 +183,7 @@ const data = {
                     fact: 2496,
                 },
             ],
-            act_of_acceptance: 12,
+            act_of_acceptance: "12",
             delivery_date: "05-07-2025",
         },
     ],

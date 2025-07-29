@@ -56,23 +56,21 @@ const tabs = [
 
 export const OrdersPages = () => {
     const { openModal: openModalDelete } = useModal("delete-order")
-    const { storeData, setStoreData, clearUserData } =
-        useTypedStoreData<OrderType>()
+    const { openModal: openOrderAdd } = useModal("product-modal")
+    const { setStoreData, clearUserData } = useTypedStoreData<OrderType>()
     const search: SearchParams = useSearch({ from: "/_main/" })
     const { page_tabs, ...params } = search
     const { data: datata, isLoading } = useGet<OrdersTypeResults>("dssdds", {
         params,
     })
-    const navigate = useNavigate()
+
+    const handleUpdate = (item: OrderType) => {
+        clearUserData()
+        setStoreData(item)
+        openOrderAdd()
+    }
 
     const handleDownload = (item: OrderType) => {}
-
-    const handleNavigate = (item: OrderType) => {
-        navigate({
-            to: "/detail/$id",
-            params: { id: item.id.toString() },
-        })
-    }
 
     const columns = useOrderColumns()
     return (
@@ -101,9 +99,7 @@ export const OrdersPages = () => {
                                           onDownload={(item) =>
                                               handleDownload(item)
                                           }
-                                          onView={(item) =>
-                                              handleNavigate(item)
-                                          }
+                                          onEdit={(item) => handleUpdate(item)}
                                       />
                                   ))}
                         </div>
@@ -115,8 +111,8 @@ export const OrdersPages = () => {
                         data={data?.results}
                         loading={isLoading}
                         onDownload={(row) => handleDownload(row.original)}
-                        onRowClick={(item) => {
-                            handleNavigate(item)
+                        onEdit={(row) => {
+                            handleUpdate(row.original)
                         }}
                         paginationProps={{ totalPages: data?.pages }}
                         numeration
