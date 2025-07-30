@@ -10,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs"
 interface ParamTabsProps {
     options: Array<{
         value: string | number
-        label: React.ReactNode | string | number
+        label: string | number
         content?: React.ReactNode
         badge?: number
         className?: ClassNameValue
@@ -54,23 +54,22 @@ const ParamTabs: React.FC<ParamTabsProps> = ({
                 : navigate({ search: { [paramName]: tab } as any })
         }
     }
-
     if (!is_visible) return null
     return (
         <Tabs
             value={currentTab}
             onValueChange={handleTabChange}
-            className={options?.[0]?.content ? "space-y-4 w-full " : ""}
+            className={options?.[0]?.content ? "space-y-4 w-full" : ""}
         >
-            <div className="max-w-full overflow-x-auto  flex flex-wrap items-center justify-between gap-4">
-                <TabsList className="h-10 flex gap-3 ">
+            <div className="max-w-full overflow-x-auto flex flex-wrap items-center justify-between gap-4">
+                <TabsList className="h-10">
                     {options.map(
                         (option) =>
                             !option.disabled && (
                                 <TabsTrigger
                                     key={option.value}
                                     value={option.value?.toString()}
-                                    className={`cursor-pointer   relative px-4 ${option.className}`}
+                                    className={`cursor-pointer relative ${option.className}`}
                                     aria-current={
                                         option.value === currentTab
                                             ? "page"
@@ -109,8 +108,7 @@ const ParamTabs: React.FC<ParamTabsProps> = ({
             </div>
             {options.map(
                 (option) =>
-                    !option.disabled &&
-                    option.content && (
+                    !option.disabled && (
                         <TabsContent
                             key={option.value}
                             value={option.value?.toString()}
