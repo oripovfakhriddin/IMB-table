@@ -241,7 +241,7 @@ export function DataTable<TData>({
                     <Table
                         className={`${className} select-text  bg-card rounded-md`}
                     >
-                        <TableHeader className=" w-full">
+                        <TableHeader className="">
                             {table
                                 .getHeaderGroups()
                                 .map((headerGroup, index) => (
@@ -367,7 +367,7 @@ export function DataTable<TData>({
                                 ))}
                         </TableHeader>
 
-                        <TableBody className="mt-20">
+                        <TableBody className="">
                             {table.getRowModel().rows?.length > 0 ? (
                                 table.getRowModel().rows?.map((row, index) => (
                                     <TableRow

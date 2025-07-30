@@ -1,5 +1,5 @@
 const data = {
-    pages: 1,
+    pages: 2,
     results: [
         {
             id: 1,

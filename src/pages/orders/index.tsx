@@ -9,6 +9,8 @@ import EmptyBox from "@/components/custom/empty-box"
 import OrderCardSkeletion from "./order-card-skeletion"
 import OrderFilter from "./order-filter"
 import data from "@/constants/data"
+import ParamPagination from "@/components/as-params/pagination"
+import { DEFAULT_PAGE_SIZE } from "@/constants/default"
 
 export const statusColor: { [key: string]: string } = {
     "10": "text-green-500",
@@ -87,6 +89,14 @@ export const OrdersPages = () => {
                                       />
                                   ))}
                         </div>
+                        {!!data?.results?.length && (
+                            <div className="my-4 flex justify-center">
+                                <ParamPagination 
+                                    disabled={isLoading}
+                                    totalPages={data?.pages}
+                                />
+                            </div>
+                        )}
                         {!data?.results?.length && <EmptyBox />}
                     </div>
                 ) : (
@@ -100,7 +110,6 @@ export const OrdersPages = () => {
                         }}
                         paginationProps={{ totalPages: data?.pages }}
                         numeration
-                        viewAll
                     />
                 )}
             </div>
