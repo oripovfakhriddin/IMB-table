@@ -22,7 +22,7 @@ function OrderFilter() {
     })
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             <ParamInput
                 name="search"
                 type="text"
@@ -30,17 +30,6 @@ function OrderFilter() {
                 placeholder="Qidiruv..."
                 fullWidth
                 className="md:w-[200px]"
-            />
-            <ParamCombobox
-                options={dataUsers?.results || []}
-                valueKey="id"
-                labelKey="full_name"
-                label="Haydovchi ismi"
-                paramName="customer"
-                className="md:w-[200px] w-full"
-                onSearchChange={(val) =>
-                    setSearch((prev) => ({ ...prev, customer: val }))
-                }
             />
             <ParamCombobox
                 options={dataLogist?.results || []}

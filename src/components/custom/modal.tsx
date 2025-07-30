@@ -48,7 +48,10 @@ const Modal = ({
     return (
         <Dialog open={isOpen} onOpenChange={handleClose}>
             {isOpen && (
-                <DialogContent className={size + className}>
+                <DialogContent
+                    className={size + className}
+                    aria-describedby="id"
+                >
                     {title && <DialogTitle>{title}</DialogTitle>}
                     {!title && (
                         <VisuallyHidden>

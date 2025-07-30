@@ -1,13 +1,14 @@
-import { cn } from "@/lib/utils";
-import { useThemeContext } from "@/layouts/color";
-import { Popover, PopoverContent, PopoverTrigger } from "../../ui/popover";
-import { Button } from "../../ui/button";
-import {  Moon, Palette,  Sun } from "lucide-react";
-import { Label } from "@radix-ui/react-label";
-import { useTheme } from "@/layouts/theme";
-import { useEffect } from "react";
-import { getIcon } from "./getIcon";
-import { themes } from "@/lib/theme-colors";
+import { cn } from "@/lib/utils"
+import { useThemeContext } from "@/layouts/color"
+import { Popover, PopoverContent, PopoverTrigger } from "../../ui/popover"
+import { Button } from "../../ui/button"
+import { LayoutList, Moon, Palette, Sun, Table } from "lucide-react"
+import { Label } from "@radix-ui/react-label"
+import { useTheme } from "@/layouts/theme"
+import { useEffect } from "react"
+import { getIcon } from "./getIcon"
+import { themes } from "@/lib/theme-colors"
+import ParamTabs from "@/components/as-params/tabs"
 
 const availableThemeColors = [
     { name: "Zinc", uz: "Siyoh", light: "bg-zinc-900", dark: "bg-zinc-700" },
@@ -63,36 +64,46 @@ const availableThemeColors = [
     //     uz: "React",
     //     icon: "/react.svg",
     // }
-];
+]
+const tabs = [
+    {
+        label: <Table size={20} />,
+        value: "table",
+    },
+    {
+        label: <LayoutList size={20} />,
+        value: "card",
+    },
+]
 
 export function ThemeColorToggle() {
-    const { themeColor, setThemeColor } = useThemeContext();
-    const { theme, setTheme } = useTheme();
+    const { themeColor, setThemeColor } = useThemeContext()
+    const { theme, setTheme } = useTheme()
 
     useEffect(() => {
         const currentPrimary =
-            themes[themeColor][theme as "light" | "dark"].primary;
+            themes[themeColor][theme as "light" | "dark"].primary
         const currentTextColor =
-            themes[themeColor][theme as "light" | "dark"].foreground;
-        const svgString = getIcon(currentPrimary, currentTextColor);
-        const blob = new Blob([svgString], { type: "image/svg+xml" });
-        const url = URL.createObjectURL(blob);
+            themes[themeColor][theme as "light" | "dark"].foreground
+        const svgString = getIcon(currentPrimary, currentTextColor)
+        const blob = new Blob([svgString], { type: "image/svg+xml" })
+        const url = URL.createObjectURL(blob)
 
-        let favicon = document.getElementById("favicon") as HTMLLinkElement;
+        let favicon = document.getElementById("favicon") as HTMLLinkElement
         if (favicon) {
-            document.head.removeChild(favicon);
+            document.head.removeChild(favicon)
         }
 
-        favicon = document.createElement("link");
-        favicon.id = "favicon";
-        favicon.rel = "icon";
-        favicon.type = "image/svg+xml";
-        favicon.href = url;
+        favicon = document.createElement("link")
+        favicon.id = "favicon"
+        favicon.rel = "icon"
+        favicon.type = "image/svg+xml"
+        favicon.href = url
 
-        document.head.appendChild(favicon);
+        document.head.appendChild(favicon)
 
-        return () => URL.revokeObjectURL(url);
-    }, [themeColor, theme]);
+        return () => URL.revokeObjectURL(url)
+    }, [themeColor, theme])
 
     return (
         <Popover>
@@ -149,7 +160,7 @@ export function ThemeColorToggle() {
                                                     "rounded-full h-5 w-5",
                                                     theme === "light"
                                                         ? light
-                                                        : dark
+                                                        : dark,
                                                 )}
                                             />
                                         )
@@ -168,11 +179,15 @@ export function ThemeColorToggle() {
                                 >
                                     {uz}
                                 </Button>
-                            )
+                            ),
                         )}
                     </div>
                 </div>
+                <div className="">
+                    <Label className="text-sm">Table-Card</Label>
+                    <ParamTabs options={tabs} />
+                </div>
             </PopoverContent>
         </Popover>
-    );
+    )
 }

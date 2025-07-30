@@ -16,7 +16,6 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as MainImport } from './routes/_main'
 import { Route as AuthImport } from './routes/_auth'
 import { Route as MainIndexImport } from './routes/_main/index'
-import { Route as MainDetailIdImport } from './routes/_main/detail/$id'
 
 // Create Virtual Routes
 
@@ -45,12 +44,6 @@ const AuthAuthLazyRoute = AuthAuthLazyImport.update({
   path: '/auth',
   getParentRoute: () => AuthRoute,
 } as any).lazy(() => import('./routes/_auth/auth.lazy').then((d) => d.Route))
-
-const MainDetailIdRoute = MainDetailIdImport.update({
-  id: '/detail/$id',
-  path: '/detail/$id',
-  getParentRoute: () => MainRoute,
-} as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -84,13 +77,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MainIndexImport
       parentRoute: typeof MainImport
     }
-    '/_main/detail/$id': {
-      id: '/_main/detail/$id'
-      path: '/detail/$id'
-      fullPath: '/detail/$id'
-      preLoaderRoute: typeof MainDetailIdImport
-      parentRoute: typeof MainImport
-    }
   }
 }
 
@@ -108,12 +94,10 @@ const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
 interface MainRouteChildren {
   MainIndexRoute: typeof MainIndexRoute
-  MainDetailIdRoute: typeof MainDetailIdRoute
 }
 
 const MainRouteChildren: MainRouteChildren = {
   MainIndexRoute: MainIndexRoute,
-  MainDetailIdRoute: MainDetailIdRoute,
 }
 
 const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)
@@ -122,14 +106,12 @@ export interface FileRoutesByFullPath {
   '': typeof MainRouteWithChildren
   '/auth': typeof AuthAuthLazyRoute
   '/': typeof MainIndexRoute
-  '/detail/$id': typeof MainDetailIdRoute
 }
 
 export interface FileRoutesByTo {
   '': typeof AuthRouteWithChildren
   '/auth': typeof AuthAuthLazyRoute
   '/': typeof MainIndexRoute
-  '/detail/$id': typeof MainDetailIdRoute
 }
 
 export interface FileRoutesById {
@@ -138,21 +120,14 @@ export interface FileRoutesById {
   '/_main': typeof MainRouteWithChildren
   '/_auth/auth': typeof AuthAuthLazyRoute
   '/_main/': typeof MainIndexRoute
-  '/_main/detail/$id': typeof MainDetailIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '' | '/auth' | '/' | '/detail/$id'
+  fullPaths: '' | '/auth' | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '' | '/auth' | '/' | '/detail/$id'
-  id:
-    | '__root__'
-    | '/_auth'
-    | '/_main'
-    | '/_auth/auth'
-    | '/_main/'
-    | '/_main/detail/$id'
+  to: '' | '/auth' | '/'
+  id: '__root__' | '/_auth' | '/_main' | '/_auth/auth' | '/_main/'
   fileRoutesById: FileRoutesById
 }
 
@@ -191,8 +166,7 @@ export const routeTree = rootRoute
     "/_main": {
       "filePath": "_main.tsx",
       "children": [
-        "/_main/",
-        "/_main/detail/$id"
+        "/_main/"
       ]
     },
     "/_auth/auth": {
@@ -201,10 +175,6 @@ export const routeTree = rootRoute
     },
     "/_main/": {
       "filePath": "_main/index.tsx",
-      "parent": "/_main"
-    },
-    "/_main/detail/$id": {
-      "filePath": "_main/detail/$id.tsx",
       "parent": "/_main"
     }
   }

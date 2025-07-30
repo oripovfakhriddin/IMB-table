@@ -58,7 +58,7 @@ export const PromptProvider: React.FC<{ children: ReactNode }> = ({
         <PromptContext.Provider value={{ prompt }}>
             {children}
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                <DialogContent>
+                <DialogContent aria-describedby="id">
                     <DialogHeader>
                         <DialogTitle>{dialogTitle || "Sabab?"}</DialogTitle>
                         <VisuallyHidden>

@@ -16,7 +16,7 @@ export default function SeeMore({ open = true, setOpen, d, children }: { d?: any
                     {d?.name}
                 </Badge>}
             </DialogTrigger>
-            <DialogContent className="max-w-4xl min-h-64 max-h-[80vh] w-full !p-0 bg-transparent shadow-none border-none">
+            <DialogContent className="max-w-4xl min-h-64 max-h-[80vh] w-full !p-0 bg-transparent shadow-none border-none" aria-describedby="id">
                 <DialogHeader className="hidden">
                     <DialogTitle className="text-left hidden">{d?.name}</DialogTitle>
                     <VisuallyHidden><DialogDescription>{d?.name}</DialogDescription></VisuallyHidden>

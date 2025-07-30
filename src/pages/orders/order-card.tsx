@@ -34,15 +34,16 @@ import { useTypedStoreData } from "../../hooks/useStoreData"
 
 type Props = {
     item: OrderType
+    tr: number
     onDownload: (item: OrderType) => void
     onEdit: (item: OrderType) => void
 }
 
-function OrderCard({ item, onDownload, onEdit }: Props) {
+function OrderCard({ item, tr, onDownload, onEdit }: Props) {
     return (
         <Card className="px-4 pb-6 pt-2 space-y-4 cursor-pointer hover:shadow-md hover:scale-[101%] transition-all">
             <CardHeader className="flex flex-row p-0 pb-2 border-b border-b-muted justify-between items-center gap-3 w-full">
-                <span>#{item.id}</span>
+                <span>#{tr}</span>
                 <div className="flex items-center gap-2">
                     <Button
                         onClick={() => {
@@ -170,15 +171,6 @@ function OrderCard({ item, onDownload, onEdit }: Props) {
                     </div>
                     <span className="line-clamp-1 break-all">
                         {formatCarNumber(item?.number_machine) || "-"}
-                    </span>
-                </div>
-                <div className="flex justify-between items-center gap-3 text-sm ">
-                    <div className="flex items-center gap-2 whitespace-nowrap text-gray-600">
-                        <MapPinHouse size={16} className="text-primary" />
-                        <span>Yo'nalish nomi:</span>
-                    </div>
-                    <span className="line-clamp-1 break-all">
-                        {item.direction_name || "-"}
                     </span>
                 </div>
                 <div className="flex justify-between items-center gap-3 text-sm ">

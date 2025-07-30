@@ -6,14 +6,6 @@ import {
 } from "@/components/ui/popover"
 import { ColumnDef } from "@tanstack/react-table"
 import { Fragment, useMemo } from "react"
-import Status from "./status"
-import {
-    InputAcceptance,
-    InputCount,
-    InputDeliveryDate,
-    InputFact,
-} from "./inputs"
-import { useModal } from "@/hooks/useModal"
 import { Card, CardContent } from "@/components/ui/card"
 import { Container } from "lucide-react"
 import { formatCarNumber } from "@/lib/utils"
@@ -32,12 +24,6 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                 accessorKey: "direction",
                 enableSorting: true,
                 cell: ({ row }) => row.original.direction || "-",
-            },
-            {
-                header: "Yo'nalish nomi",
-                accessorKey: "direction_name",
-                enableSorting: true,
-                cell: ({ row }) => row.original.direction_name || "-",
             },
             {
                 header: "TTN Nomer",
@@ -67,6 +53,7 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
             {
                 header: "Status",
                 accessorKey: "status",
+                enableSorting: true,
                 cell: ({ row }) =>
                     row.original?.status === 10 ? (
                         <p className="text-green-500">Success</p>
@@ -133,7 +120,9 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                                                         </span>
                                                     </div>
                                                     <span className="line-clamp-1 break-all">
-                                                        {i?.fact || "-"}
+                                                        {i?.fact === 0
+                                                            ? "-"
+                                                            : i?.fact}
                                                     </span>
                                                 </div>
                                                 <hr />
@@ -154,7 +143,12 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                     row.original?.product_info.reduce(
                         (sum, item) => sum + item.count,
                         0,
-                    ),
+                    ) === 0
+                        ? "-"
+                        : row.original?.product_info.reduce(
+                              (sum, item) => sum + item.count,
+                              0,
+                          ),
             },
             {
                 header: "Fakt miqdori",
@@ -170,13 +164,13 @@ export const useOrderColumns = (): ColumnDef<OrderType>[] => {
                 header: "Qabul qilingan raqam",
                 accessorKey: "act_of_acceptance",
                 enableSorting: true,
-                cell: ({ row }) => row.original.act_of_acceptance,
+                cell: ({ row }) => row.original.act_of_acceptance ?? "-",
             },
             {
                 header: "Yetkazilgan sana",
                 accessorKey: "delivery_date",
                 enableSorting: true,
-                cell: ({ row }) => row.original.delivery_date,
+                cell: ({ row }) => row.original.delivery_date ?? "-",
             },
         ],
         [],

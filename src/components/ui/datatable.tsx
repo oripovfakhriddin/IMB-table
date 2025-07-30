@@ -102,14 +102,14 @@ export function DataTable<TData>({
     numeration = false,
     wrapperClassName,
     actionMenuMode,
+    skeletonRowCount = 15,
+    tableWrapperClassName,
     onEdit,
     onDelete,
     onUndo,
     onView,
     onDownload,
-    tableWrapperClassName,
     onSelectedRowsChange,
-    skeletonRowCount = 15,
 }: DataTableProps<TData>) {
     const {
         paramName = PAGE_KEY,
@@ -241,7 +241,7 @@ export function DataTable<TData>({
                     <Table
                         className={`${className} select-text  bg-card rounded-md`}
                     >
-                        <TableHeader>
+                        <TableHeader className=" w-full">
                             {table
                                 .getHeaderGroups()
                                 .map((headerGroup, index) => (
@@ -367,7 +367,7 @@ export function DataTable<TData>({
                                 ))}
                         </TableHeader>
 
-                        <TableBody>
+                        <TableBody className="mt-20">
                             {table.getRowModel().rows?.length > 0 ? (
                                 table.getRowModel().rows?.map((row, index) => (
                                     <TableRow

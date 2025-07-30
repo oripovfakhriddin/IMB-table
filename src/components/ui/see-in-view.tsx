@@ -29,7 +29,7 @@ export default function SeeInView({
                     <img src={url} alt="img" className={`${className}` || ""} />
                 )}
             </DialogTrigger>
-            <DialogContent className="max-w-4xl min-h-64 max-h-[80vh] w-full !p-0 bg-transparent border-none">
+            <DialogContent className="max-w-4xl min-h-64 max-h-[80vh] w-full !p-0 bg-transparent border-none" aria-describedby="id">
                 <DialogHeader className="hidden">
                     <DialogTitle className="text-left hidden">
                         {"name"}

@@ -1,9 +1,7 @@
 import { useOrderColumns } from "./columns"
 import { DataTable } from "@/components/ui/datatable"
-import ParamTabs from "@/components/as-params/tabs"
-import { LayoutList, Table } from "lucide-react"
 import { useModal } from "@/hooks/useModal"
-import { useNavigate, useSearch } from "@tanstack/react-router"
+import { useSearch } from "@tanstack/react-router"
 import { useGet } from "@/hooks/useGet"
 import { useTypedStoreData } from "@/hooks/useStoreData"
 import OrderCard from "./order-card"
@@ -43,17 +41,6 @@ export const statusOptions = [
     },
 ]
 
-const tabs = [
-    {
-        label: <Table size={20} />,
-        value: "table",
-    },
-    {
-        label: <LayoutList size={20} />,
-        value: "card",
-    },
-]
-
 export const OrdersPages = () => {
     const { openModal: openModalDelete } = useModal("delete-order")
     const { openModal: openOrderAdd } = useModal("product-modal")
@@ -76,17 +63,13 @@ export const OrdersPages = () => {
     return (
         <>
             <div className="w-full ">
-                <div className="flex flex-row justify-between items-center gap-3 mb-4">
-                    <h1 className="text-3xl">Ro'yhatlar</h1>
-                    <ParamTabs options={tabs} />
-                </div>
                 <div className="md:hidden mb-3">
                     <OrderFilter />
                 </div>
 
                 {search.page_tabs === "card" ? (
                     <div>
-                        <div className="grid  lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+                        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
                             {isLoading
                                 ? Array.from({ length: 20 }).map((_, index) => (
                                       <OrderCardSkeletion key={index} />
@@ -96,6 +79,7 @@ export const OrdersPages = () => {
                                       <OrderCard
                                           key={index}
                                           item={item}
+                                          tr={index + 1}
                                           onDownload={(item) =>
                                               handleDownload(item)
                                           }

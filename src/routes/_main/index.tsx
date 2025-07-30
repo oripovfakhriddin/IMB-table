@@ -5,7 +5,11 @@ import { createFileRoute } from "@tanstack/react-router"
 
 export const Route = createFileRoute("/_main/")({
     component: () => (
-        <PageLayout title="Buyurtmalar" rigthChildren={<OrderFilter />}>
+        <PageLayout
+            title="Buyurtmalar"
+            leftChildren={<h1 className="text-xl">Zamin Drinks OOO</h1>}
+            rigthChildren={<OrderFilter />}
+        >
             <OrdersPages />
         </PageLayout>
     ),

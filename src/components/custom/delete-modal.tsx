@@ -67,7 +67,7 @@ export default function DeleteModal({
                 <DialogTitle className="font-normal max-w-sm">
                     Siz haqiqatdan ham {name} o'chirishni xohlaysizmi ?
                 </DialogTitle>
-                <DialogDescription>
+                <DialogDescription aria-describedby="id">
                     Bu qaytarib bo'lmas jarayon!!!
                 </DialogDescription>
             </DialogHeader>
